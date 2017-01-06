@@ -1,0 +1,11 @@
+{% extends 'TestBundle::layout.html.twig' %}
+
+{% block body %}
+    <section ng-controller="pokerController">
+        funcionando
+        {% verbatim %}
+        <button ng-click="getToken()">token</button>
+        <button ng-click="getCards(token)">cards</button>
+        {% endverbatim %}
+    </section>
+{% endblock %}

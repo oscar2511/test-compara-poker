@@ -1,0 +1,12 @@
+test_homepage:
+    path:     /
+    defaults: { _controller: TestBundle:Poker:index }
+
+token:
+    path:     /token
+    defaults: { _controller: TestBundle:Poker:getToken }
+
+checkWinner:
+    path:    /checkWinner
+    defaults: { _controller: TestBundle:Poker:checkWinner }
+    method: POST
