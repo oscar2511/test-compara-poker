@@ -2,8 +2,39 @@
 
 {% block body %}
     <section ng-controller="pokerController">
-        funcionando
         {% verbatim %}
+
+        <div class="panel panel-info" style="width: 500px;">
+            <div class="panel-heading">Player One <button type="button" class="btn btn-info btn-sm" ng-click="shuffle1(token)">Shuffle</button></div>
+            <div class="panel-body">
+                <li ng-if="cardsP1" ng-repeat=" card in cardsP1">
+                    {{ card.number }}
+                    {{ card.suit }}
+                </li>
+            </div>
+            <div class="panel-footer">Move player 1: </div>
+        </div>
+
+
+        <button ng-disabled="!isCardsP1 || !isCardsP2" type="button" class="btn btn-success btn-sm" ng-click="checkWinner(cards)">Check Winner</button>
+        <button type="button" class="btn btn-danger btn-sm" ng-click="reset()">Reset</button>
+        <br><br>
+
+        <div class="panel panel-success" style="width: 500px;">
+            <div class="panel-heading">Player Two <button type="button" class="btn btn-info btn-sm" ng-click="shuffle2(token)">Shuffle</button></div>
+            <div class="panel-body">
+                <li ng-if="cardsP2" ng-repeat=" card in cardsP2">
+                    {{ card.number }}
+                    {{ card.suit }}
+                </li>
+            </div>
+            <div class="panel-footer">Move player 2:</div>
+        </div>
+
+
+
+
+
         <button ng-click="getToken()">token</button>
         <button ng-click="getCards(token)">cards</button>
         <button ng-click="checkWinner(cards)">check winner</button>

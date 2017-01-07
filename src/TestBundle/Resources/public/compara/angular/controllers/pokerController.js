@@ -7,6 +7,9 @@
 
         var url = 'http://dealer.internal.comparaonline.com:8080/deck';
 
+        $scope.isCardsP1 = false;
+        $scope.isCardsP2 = false;
+
         /**
          *
          */
@@ -38,6 +41,44 @@
                 'suit': 'hearts'}
         ];
 
+
+    $scope.shuffle1 = function(token) {
+        if(token && token != 'undefined') {
+            $scope.getCards(token).then(function(response){
+                if(!angular.isUndefined(response)){
+                    console.log(response);
+                    $scope.isCardsP1 = true;
+                    $scope.cardsP1   = response;
+                }
+            });
+        }
+    };
+
+    $scope.shuffle2 = function(token) {
+        if(token && token != 'undefined') {
+            $scope.getCards(token).then(function(response){
+                if(!angular.isUndefined(response)){
+                    console.log(response);
+                    $scope.isCardsP2 = true;
+                    $scope.cardsP2   = response;
+                }
+            });
+        }
+    };
+
+    /**
+     *
+     */
+    $scope.reset = function () {
+        $scope.isCardsP1 = false;
+        $scope.cardsP1   = [];
+        $scope.isCardsP2 = false;
+        $scope.cardsP2   = [];
+    };
+
+
+
+
         /**
          *
          * @param token string
@@ -48,12 +89,13 @@
 
             else {
                 var url = 'http://dealer.internal.comparaonline.com:8080/deck/'+token+'/deal/5';
-                $http.get(url)
-                    .then(function(data){
+               return $http.get(url)
+                    .then(function(data) {
                         if(data && data.status === 200) {
                             //$scope.cards = data.data;
                             $scope.cards = $scope.failData;
-                            console.log($scope.failData);
+                            //console.log($scope.failData);
+                            return $scope.cards;
                         }
                     }).catch(function(err) {
                         console.log(err);

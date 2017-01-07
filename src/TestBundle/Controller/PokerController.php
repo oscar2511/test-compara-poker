@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use TestBundle\Lib\Card;
 use TestBundle\Lib\Move;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PokerController extends Controller
 {
@@ -39,27 +40,30 @@ class PokerController extends Controller
         $move = new Move();
 
         if($this->isRoyalFlush($cards))
-            $move->setName('royal flush');
+            $move->setName('Royal flush');
         if($this->isStraightFlush($cards))
-            $move->setName('royal flush');
+            $move->setName('Straight flush');
         if($this->isFourOfKind($cards))
-           $move->setName('four of a kind');
+           $move->setName('Four of a kind');
         if($this->isFullHouse($cards))
-            $move->setName('full house');
+            $move->setName('Full house');
         if($this->isFlush($cards))
-            $move->setName('flush');
+            $move->setName('Flush');
         if($this->isStraight($cards))
-            $move->setName('straight');
+            $move->setName('Straight');
         if($this->isThree($cards))
-            $move->setName('three');
+            $move->setName('Three');
         if($this->isTwoPairs($cards))
-            $move->setName('two pairs');
+            $move->setName('Two pairs');
         if($this->isPair($cards))
-            $move->setName('pair');
+            $move->setName('Pair');
         if($this->isHighCard($cards))
-            $move->setName('pair');
-
-        return new Response('OK');
+            $move->setName('High card');
+        var_dump($move); die;
+        return new jsonResponse(array(
+            'status' => 200,
+            'data'
+        ));
 
     }
 
