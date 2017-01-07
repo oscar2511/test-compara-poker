@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc8a6833-c41b-4955-8c86-78726319aaca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TestBundle/Lib/Card.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TestBundle/Lib/Move.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php" afterPath="$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Resources/views/poker/index.html.twig" afterPath="$PROJECT_DIR$/src/TestBundle/Resources/views/poker/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" afterPath="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/TestBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="testComparaPoker.iws" />
@@ -721,12 +713,19 @@
       <workItem from="1483741331117" duration="536000" />
       <workItem from="1483741899423" duration="11074000" />
       <workItem from="1483759332964" duration="5118000" />
-      <workItem from="1483764476101" duration="8196000" />
+      <workItem from="1483764476101" duration="8218000" />
     </task>
+    <task id="LOCAL-00001" summary="jugadas">
+      <created>1483772690163</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1483772690163</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49058000" />
+    <option name="totallyTimeSpent" value="49080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -746,6 +745,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -773,9 +773,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="jugadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="jugadas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
