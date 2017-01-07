@@ -6,7 +6,7 @@ token:
     path:     /token
     defaults: { _controller: TestBundle:Poker:getToken }
 
-checkWinner:
-    path:    /checkWinner
+check-winner:
+    path:    /check-winner
     defaults: { _controller: TestBundle:Poker:checkWinner }
-    method: POST
+    methods: POST
