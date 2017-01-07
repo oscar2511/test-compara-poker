@@ -39,30 +39,42 @@ class PokerController extends Controller
 
         $move = new Move();
 
-        if($this->isRoyalFlush($cards))
-            $move->setName('Royal flush');
-        if($this->isStraightFlush($cards))
-            $move->setName('Straight flush');
-        if($this->isFourOfKind($cards))
-           $move->setName('Four of a kind');
-        if($this->isFullHouse($cards))
-            $move->setName('Full house');
-        if($this->isFlush($cards))
-            $move->setName('Flush');
-        if($this->isStraight($cards))
-            $move->setName('Straight');
-        if($this->isThree($cards))
-            $move->setName('Three');
-        if($this->isTwoPairs($cards))
-            $move->setName('Two pairs');
-        if($this->isPair($cards))
-            $move->setName('Pair');
-        if($this->isHighCard($cards))
-            $move->setName('High card');
-        var_dump($move); die;
+        switch (true){
+            case $this->isRoyalFlush($cards)['match']:
+                $move->setName('Royal flush');
+                break;
+            case $this->isStraightFlush($cards):
+                $move->setName('Straight flush');
+                break;
+            case $this->isFourOfKind($cards)['match']:
+                $move->setName('Four of a kind');
+                break;
+            case $this->isFullHouse($cards)['match']:
+                $move->setName('Full house');
+                break;
+            case $this->isFlush($cards)['match']:
+                $move->setName('Flush');
+                break;
+            case $this->isStraight($cards)['match']:
+                $move->setName('Straight');
+                break;
+            case $this->isThree($cards)['match']:
+                $move->setName('Three');
+                break;
+            case $this->isTwoPairs($cards)['match']:
+                $move->setName('Two pairs');
+                break;
+            case $this->isPair($cards)['match']:
+                $move->setName('Pair');
+                break;
+            case $this->isHighCard($cards)['match']:
+                $move->setName('High card');
+                break;
+        }
+
         return new jsonResponse(array(
             'status' => 200,
-            'data'
+            'data'   => $move->toArray()
         ));
 
     }
@@ -99,9 +111,13 @@ class PokerController extends Controller
         }
 
         if(($contNumber + $contSuit) == 9 )
-            return true;
+            return array(
+                'match' => true,
+            );
         else
-            return false;
+            return array(
+                'match' => false,
+            );
     }
 
 
@@ -147,7 +163,7 @@ class PokerController extends Controller
                 $prev = $arrayOrder[$i];
             else
                 return array(
-                    'match'    => false
+                    'match' => false
                 );
         }
 
@@ -179,6 +195,7 @@ class PokerController extends Controller
             else
                 $kicker = $cards[$i]->getNumber();
         }
+
 
         if($theNumber != '')
             return array(
@@ -215,7 +232,7 @@ class PokerController extends Controller
                 $pairs = $cards[$i]->getNumber();
             else
                 return array(
-                    'match'  => false
+                    'match' => false
                 );
         }
 
@@ -318,7 +335,7 @@ class PokerController extends Controller
 
         if($three == '')
             return array(
-                'match'  => false
+                'match'=> false
             );
         return array(
             'match'  => true,
@@ -349,14 +366,12 @@ class PokerController extends Controller
             $numbers[] = $cards[$i]->getNumber();
         }
 
-
         for ($i = 0; $i < count($numbers); $i++) {
             if (count(array_keys($numbers, $cards[$i]->getNumber())) == 2 && $pairOne['number'] != $cards[$i]->getNumber()) {
                 $pairOne['number']   = $cards[$i]->getNumber();
                 $pairOne['suit']     = $cards[$i]->getSuit();
                 $pairOne['refValue'] = $cards[$i]->getReferenceValue();
             }
-
         }
         for ($i = 0; $i < count($numbers); $i++) {
             if (count(array_keys($numbers, $cards[$i]->getNumber())) == 2 && $pairOne['number'] != $cards[$i]->getNumber()) {
@@ -365,7 +380,6 @@ class PokerController extends Controller
                 $pairTwo['refValue'] = $cards[$i]->getReferenceValue();
             }
         }
-
 
         if($pairOne['number'] == ''  || $pairTwo['number'] == '')
             return array(
@@ -426,7 +440,6 @@ class PokerController extends Controller
     }
 
 
-
     /**
      * @param array $cards
      * @return array
@@ -461,8 +474,6 @@ class PokerController extends Controller
         return false;
 
     }
-
-
 
 
 

@@ -9,6 +9,8 @@
 
         $scope.isCardsP1 = false;
         $scope.isCardsP2 = false;
+        $scope.moveP1    = [];
+        $scope.moveP2    = [];
 
         /**
          *
@@ -67,17 +69,16 @@
     };
 
     /**
-     *
+     * Reset default values
      */
     $scope.reset = function () {
         $scope.isCardsP1 = false;
         $scope.cardsP1   = [];
         $scope.isCardsP2 = false;
         $scope.cardsP2   = [];
+        $scope.moveP1    = [];
+        $scope.moveP2    = [];
     };
-
-
-
 
         /**
          *
@@ -92,9 +93,8 @@
                return $http.get(url)
                     .then(function(data) {
                         if(data && data.status === 200) {
-                            //$scope.cards = data.data;
-                            $scope.cards = $scope.failData;
-                            //console.log($scope.failData);
+                            $scope.cards = data.data;
+                            //$scope.cards = $scope.failData;
                             return $scope.cards;
                         }
                     }).catch(function(err) {
@@ -103,6 +103,28 @@
                         alert('error obteniendo cartas');
                     }) ;
             }
+        };
+
+
+
+        $scope.calculateWinner = function(){
+            if($scope.isCardsP1)
+                $scope.checkWinner($scope.cardsP1)
+                    .then(function(move) {
+                        console.log(move);
+                        $scope.moveP1['name'] = move.name;
+                        $scope.moveP1['hierarchy'] = move.hierarchy;
+                        console.log($scope.moveP1);
+                    });
+            if($scope.isCardsP2)
+                $scope.checkWinner($scope.cardsP2)
+                    .then(function(move) {
+                        console.log(move);
+                        $scope.moveP2['name'] = move.name;
+                        $scope.moveP2['hierarchy'] = move.hierarchy;
+                        console.log($scope.moveP2);
+                    });
+
         };
 
 
@@ -118,11 +140,11 @@
             };
 
             var url = 'http://app.compara.dev/app_dev.php/check-winner';
-            $http.post(url, cards, config)
+            return $http.post(url, cards, config)
                 .then(function(data){
                     if(data && data.status === 200) {
                         $scope.token = data.data;
-                        console.log(data);
+                        return data.data.data;
                     }
                 }).catch(function(err) {
                     console.log(err);
