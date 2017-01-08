@@ -36,34 +36,9 @@
                 }) ;
         };
 
-
-       /* $scope.failData = [
-            {'number': '5',
-             'suit': 'hearts'},
-            {'number': '7',
-                'suit': 'spade'},
-            {'number': 'Q',
-                'suit': 'hearts'},
-            {'number': '1',
-                'suit': 'spade'},
-            {'number': 'A',
-                'suit': 'hearts'}
-        ];
-
-        $scope.failData2 = [
-            {'number': '4',
-                'suit': 'hearts'},
-            {'number': '2',
-                'suit': 'spade'},
-            {'number': 'J',
-                'suit': 'hearts'},
-            {'number': '7',
-                'suit': 'spade'},
-            {'number': 'A',
-                'suit': 'hearts'}
-        ];*/
-
-
+        /**
+         * @param token
+         */
     $scope.shuffle1 = function(token) {
         if(token && token != 'undefined') {
             $scope.getCards(token).then(function(response){
@@ -78,6 +53,9 @@
         }
     };
 
+    /**
+     * @param token
+     */
     $scope.shuffle2 = function(token) {
         if(token && token != 'undefined') {
             $scope.getCards(token).then(function(response){
@@ -310,8 +288,6 @@
 
     init();
     };
-
-
 
     angular.module('compara.Controllers')
         .controller('pokerController', [

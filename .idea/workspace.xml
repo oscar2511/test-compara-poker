@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc8a6833-c41b-4955-8c86-78726319aaca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doc/Readme.txt" afterPath="$PROJECT_DIR$/Doc/Readme.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" afterPath="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="testComparaPoker.iws" />
@@ -33,26 +33,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0" vertical-offset="288" max-vertical-offset="1152">
               <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.92" vertical-offset="0" max-vertical-offset="558">
-              <caret line="11" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Readme.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Doc/Readme.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7012987" vertical-offset="0" max-vertical-offset="558">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pokerController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pokerController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.193548" vertical-offset="5144" max-vertical-offset="5922">
-              <caret line="293" column="60" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.8761261" vertical-offset="4831" max-vertical-offset="5490">
+              <caret line="290" column="0" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -162,9 +142,9 @@
         <option value="$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Doc/Readme.txt" />
+        <option value="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" />
       </list>
     </option>
   </component>
@@ -582,7 +562,7 @@
       <workItem from="1483863061797" duration="4184000" />
       <workItem from="1483886052212" duration="435000" />
       <workItem from="1483886522488" duration="1200000" />
-      <workItem from="1483900268258" duration="2341000" />
+      <workItem from="1483900268258" duration="2827000" />
     </task>
     <task id="LOCAL-00001" summary="jugadas">
       <created>1483772690163</created>
@@ -626,11 +606,17 @@
       <option name="project" value="LOCAL" />
       <updated>1483902614975</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix menor">
+      <created>1483902729613</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1483902729613</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79080000" />
+    <option name="totallyTimeSpent" value="79566000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -689,7 +675,8 @@
     <MESSAGE value="checkear winner" />
     <MESSAGE value="url request checkWinner" />
     <MESSAGE value="Readme en carpeta Doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme en carpeta Doc" />
+    <MESSAGE value="fix menor" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix menor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1013,14 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/views/poker/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1152">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
@@ -1057,14 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.193548" vertical-offset="5144" max-vertical-offset="5922">
-          <caret line="293" column="60" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.259259" vertical-offset="47" max-vertical-offset="756">
@@ -1083,8 +1054,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Doc/Readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7012987" vertical-offset="0" max-vertical-offset="558">
+        <state vertical-scroll-proportion="0.84375" vertical-offset="0" max-vertical-offset="558">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/views/poker/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1152">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8761261" vertical-offset="4831" max-vertical-offset="5490">
+          <caret line="290" column="0" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
           <folding />
         </state>
       </provider>
