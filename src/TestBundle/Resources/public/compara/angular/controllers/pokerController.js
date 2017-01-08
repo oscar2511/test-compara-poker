@@ -9,8 +9,14 @@
 
         $scope.isCardsP1 = false;
         $scope.isCardsP2 = false;
-        $scope.moveP1    = [];
-        $scope.moveP2    = [];
+        $scope.moveP1    = {};
+        $scope.moveP2    = {};
+        $scope.winnerP1  = false;
+        $scope.winnerP2  = false;
+
+        var init = function (){
+            $scope.getToken();
+        };
 
         /**
          *
@@ -21,6 +27,7 @@
                 .then(function(data){
                     if(data && data.status === 200) {
                         $scope.token = data.data;
+                        $scope.shouldShowErrorToken = false;
                         console.log(data);
                     }
                 }).catch(function(err) {
@@ -33,13 +40,26 @@
         $scope.failData = [
             {'number': '5',
              'suit': 'hearts'},
-            {'number': '5',
+            {'number': '7',
+                'suit': 'spade'},
+            {'number': '9',
+                'suit': 'hearts'},
+            {'number': '1',
                 'suit': 'spade'},
             {'number': 'A',
+                'suit': 'hearts'}
+        ];
+
+        $scope.failData2 = [
+            {'number': '4',
                 'suit': 'hearts'},
-            {'number': '10',
+            {'number': '2',
                 'suit': 'spade'},
             {'number': 'J',
+                'suit': 'hearts'},
+            {'number': '7',
+                'suit': 'spade'},
+            {'number': 'A',
                 'suit': 'hearts'}
         ];
 
@@ -48,10 +68,13 @@
         if(token && token != 'undefined') {
             $scope.getCards(token).then(function(response){
                 if(!angular.isUndefined(response)){
-                    console.log(response);
                     $scope.isCardsP1 = true;
-                    $scope.cardsP1   = response;
+                    //$scope.cardsP1   = response;
+                    $scope.cardsP1   = $scope.failData;
+                    $scope.shouldShowErrorCardsP1 = false;
                 }
+            }).catch(function(){
+                $scope.shouldShowErrorCardsP1 = true;
             });
         }
     };
@@ -60,10 +83,13 @@
         if(token && token != 'undefined') {
             $scope.getCards(token).then(function(response){
                 if(!angular.isUndefined(response)){
-                    console.log(response);
                     $scope.isCardsP2 = true;
-                    $scope.cardsP2   = response;
+                    //$scope.cardsP2   = response;
+                    $scope.cardsP2   = $scope.failData2;
+                    $scope.shouldShowErrorCardsP2 = false;
                 }
+            }).catch(function(){
+                $scope.shouldShowErrorCardsP2 = true;
             });
         }
     };
@@ -72,12 +98,15 @@
      * Reset default values
      */
     $scope.reset = function () {
-        $scope.isCardsP1 = false;
-        $scope.cardsP1   = [];
-        $scope.isCardsP2 = false;
+        $scope.cardsP1   = false;
         $scope.cardsP2   = [];
-        $scope.moveP1    = [];
-        $scope.moveP2    = [];
+        $scope.isCardsP1 = false;
+        $scope.isCardsP2 = false;
+        $scope.moveP1    = {};
+        $scope.moveP2    = {};
+        $scope.winnerP1  = false;
+        $scope.winnerP2  = false;
+
     };
 
         /**
@@ -94,45 +123,171 @@
                     .then(function(data) {
                         if(data && data.status === 200) {
                             $scope.cards = data.data;
-                            //$scope.cards = $scope.failData;
+                            $scope.shouldShowErrorCards = false;
                             return $scope.cards;
                         }
-                    }).catch(function(err) {
-                        console.log(err);
-                        $scope.shouldShowErrorToken = true;
-                        alert('error obteniendo cartas');
-                    }) ;
+                    });
             }
-        };
-
-
-
-        $scope.calculateWinner = function(){
-            if($scope.isCardsP1)
-                $scope.checkWinner($scope.cardsP1)
-                    .then(function(move) {
-                        console.log(move);
-                        $scope.moveP1['name'] = move.name;
-                        $scope.moveP1['hierarchy'] = move.hierarchy;
-                        console.log($scope.moveP1);
-                    });
-            if($scope.isCardsP2)
-                $scope.checkWinner($scope.cardsP2)
-                    .then(function(move) {
-                        console.log(move);
-                        $scope.moveP2['name'] = move.name;
-                        $scope.moveP2['hierarchy'] = move.hierarchy;
-                        console.log($scope.moveP2);
-                    });
-
         };
 
 
         /**
          *
+         */
+        $scope.calculateWinner = function() {
+            if($scope.isCardsP1) {
+                $scope.checkMove($scope.cardsP1)
+                    .then(function (move) {
+                        console.log(move);
+                        $scope.moveP1 = move;
+
+                        if ($scope.isCardsP2) {
+                            $scope.checkMove($scope.cardsP2)
+                                .then(function (move) {
+                                    $scope.moveP2 = move;
+                                    checkWinner($scope.moveP1, $scope.moveP2);
+                                });
+                        }
+                    });
+            }
+        };
+
+
+        /**
+         *
+         * @param move1
+         * @param move2
+         */
+        var checkWinner = function(move1, move2) {
+            if(move1.hierarchy > move2.hierarchy)
+                $scope.winnerP1 = true;
+            if (move1.hierarchy < move2.hierarchy)
+                $scope.winnerP2 = true;
+            if (move1.hierarchy == move2.hierarchy) {
+
+                switch (move1.name) {
+                    case 'Pair':
+                        checkPair(move1, move2);
+                        break;
+                    case 'Two pairs':
+                        checkPairsTwo(move1, move2);
+                        break;
+                    case 'Three':
+                        checkThree(move1, move2);
+                        break;
+                    case 'Straight':
+                        checkStraight(move1, move2);
+                        break;
+                    case 'Full house':
+                        checkFullHouse(move1, move2);
+                        break;
+                    case 'Four of a kind':
+                        checkThree(move1, move2);
+                        break;
+                    case 'Straight flush':
+                        checkPairsTwo(move1, move2);
+                        break;
+                    case 'High card':
+                        checkHighCard(move1, move2);
+                        break;
+                }
+            }
+        };
+
+        /**
+         *
+         * @param move1
+         * @param move2
+         */
+        var checkHighCard = function(move1, move2) {
+          if(move1.data.valMax > move2.data.valMax)
+              $scope.winnerP1 = true;
+          if(move1.data.valMax < move2.data.valMax)
+              $scope.winnerP2 = true;
+          if(move1.data.valMax == move2.data.valMax) {
+              //for (var i=0; i<move1.data.; i++) {
+          }
+
+        };
+
+        /**
+         *
+         * @param move1
+         * @param move2
+         */
+        var checkPair = function(move1, move2) {
+            if(move1.data.cardsPair.refValue > move2.data.cardsPair.refValue)
+                $scope.winnerP1 = true;
+            if(move1.data.cardsPair.refValue < move2.data.cardsPair.refValue)
+                $scope.winnerP2 = true;
+            if(move1.data.cardsPair.refValue == move2.data.cardsPair.refValue) {
+                if(move1.data.valMax > move2.data.valMax)
+                    $scope.winnerP1 = true;
+                else $scope.winnerP2 = true;
+            }
+        };
+
+        /**
+         *
+         * @param move1
+         * @param move2
+         */
+        var checkPairsTwo = function(move1, move2) {
+            if(move1.data.valMax > move2.data.valMax)
+                $scope.winnerP1 = true;
+            if(move1.data.valMax < move2.data.valMax)
+                $scope.winnerP2 = true;
+            if(move1.data.valMax == move2.data.valMax)
+                $scope.draw = true;
+        };
+
+
+        /**
+         * @param move1
+         * @param move2
+         */
+        var checkFullHouse = function(move1, move2) {
+            if(move1.data.valMax.refValue > move2.data.valMax.refValue)
+                $scope.winnerP1 = true;
+            if(move1.data.valMax.refValue < move2.data.valMax.refValue)
+                $scope.winnerP2 = true;
+            if(move1.data.valMax.refValue == move2.data.valMax.refValue) {
+                if (move1.data.secondValMax.refValue > move2.data.secondValMax.refValue) {
+                    $scope.winnerP1 = true;
+                } else $scope.winnerP2 = true;
+
+            }
+
+        };
+
+        /**
+         *
+         * @param move1
+         * @param move2
+         */
+        var checkStraight = function(move1, move2) {
+            if(move1.data.valMax > move2.data.valMax)
+                $scope.winnerP1 = true;
+            if(move1.data.valMax < move2.data.valMax)
+                $scope.winnerP2 = true;
+        };
+
+        /**
+         * @param move1
+         * @param move2
+         */
+        var checkThree = function(move1, move2) {
+            if(move1.data.valMax.refValue > move2.data.valMax.refValue)
+                $scope.winnerP1 = true;
+            if(move1.data.valMax.refValue < move2.data.valMax.refValue)
+                $scope.winnerP2 = true;
+        };
+
+        /**
+         *
          * @param cards
          */
-        $scope.checkWinner = function(cards) {
+        $scope.checkMove = function(cards) {
             var config = {
                 headers : {
                     'Content-Type': 'application/json'
@@ -153,7 +308,7 @@
                 }) ;
         };
 
-
+    init();
     };
 
 

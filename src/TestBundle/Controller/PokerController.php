@@ -45,30 +45,39 @@ class PokerController extends Controller
                 break;
             case $this->isStraightFlush($cards):
                 $move->setName('Straight flush');
+                $move->setData($this->isStraightFlush($cards)['data']);
                 break;
             case $this->isFourOfKind($cards)['match']:
                 $move->setName('Four of a kind');
+                $move->setData($this->isFourOfKind($cards)['data']);
                 break;
             case $this->isFullHouse($cards)['match']:
                 $move->setName('Full house');
+                $move->setData($this->isFullHouse($cards)['data']);
                 break;
             case $this->isFlush($cards)['match']:
                 $move->setName('Flush');
+                $move->setData($this->isFlush($cards)['data']);
                 break;
             case $this->isStraight($cards)['match']:
                 $move->setName('Straight');
+                $move->setData($this->isStraight($cards)['data']);
                 break;
             case $this->isThree($cards)['match']:
                 $move->setName('Three');
+                $move->setData($this->isThree($cards)['data']);
                 break;
             case $this->isTwoPairs($cards)['match']:
                 $move->setName('Two pairs');
+                $move->setData($this->isTwoPairs($cards)['data']);
                 break;
             case $this->isPair($cards)['match']:
                 $move->setName('Pair');
+                $move->setData($this->isPair($cards)['data']);
                 break;
             case $this->isHighCard($cards)['match']:
                 $move->setName('High card');
+                $move->setData($this->isHighCard($cards)['data']);
                 break;
         }
 
@@ -168,8 +177,10 @@ class PokerController extends Controller
         }
 
         return array(
-            'match'  => true,
-            'valMax' => $valMax
+            'match' => true,
+            'data'  => array(
+                'valMax' => $valMax
+            )
         );
 
     }
@@ -182,7 +193,11 @@ class PokerController extends Controller
     private function isFourOfKind($cards)
     {
         $numbers   = array();
-        $theNumber = '';
+        $theCard   = array(
+            'number'   => '',
+            'suit'     => '',
+            'refValue' => ''
+        );
         $kicker    = '';
 
         for($i=0;$i<count($cards);$i++) {
@@ -190,17 +205,22 @@ class PokerController extends Controller
         }
 
         for($i=0;$i<count($numbers);$i++) {
-            if (count(array_keys($numbers, $cards[$i]->getNumber())) == 4)
-                $theNumber = $cards[$i]->getNumber();
+            if (count(array_keys($numbers, $cards[$i]->getNumber())) == 4) {
+                $theCard['number']   = $cards[$i]->getNumber();
+                $theCard['suit']     = $cards[$i]->getSuit();
+                $theCard['refValue'] = $cards[$i]->getReferenceValue();
+            }
             else
                 $kicker = $cards[$i]->getNumber();
         }
 
-
-        if($theNumber != '')
+        if($theCard['number'] != '')
             return array(
-                'match'  => true,
-                'kicker' => $kicker
+                'match' => true,
+                'data'  => array (
+                    'valMax' => $theCard,
+                    'kicker' => $kicker
+                )
             );
         else
             return array(
@@ -217,19 +237,32 @@ class PokerController extends Controller
     public function isFullHouse(array $cards)
     {
         $numbers = array();
-        $three   = '';
-        $pairs   = array();
+        $three   = array(
+            'number'   => '',
+            'suit'     => '',
+            'refValue' => '',
+        );
+        $pair = array(
+            'number'   => '',
+            'suit'     => '',
+            'refValue' => '',
+        );
 
         for($i=0;$i<count($cards);$i++) {
             $numbers[] = $cards[$i]->getNumber();
         }
 
-
         for($i=0;$i<count($numbers);$i++) {
-            if (count(array_keys($numbers, $cards[$i]->getNumber())) == 3)
-                $three = $cards[$i]->getNumber();
-            elseif(count(array_keys($numbers, $cards[$i]->getNumber())) == 2)
-                $pairs = $cards[$i]->getNumber();
+            if (count(array_keys($numbers, $cards[$i]->getNumber())) == 3) {
+                $three['number']   = $cards[$i]->getNumber();
+                $three['suit']     = $cards[$i]->getSuit();
+                $three['refValue'] = $cards[$i]->getReferenceValue();
+            }
+            elseif(count(array_keys($numbers, $cards[$i]->getNumber())) == 2) {
+                $pair['number']   = $cards[$i]->getNumber();
+                $pair['suit']     = $cards[$i]->getSuit();
+                $pair['refValue'] = $cards[$i]->getReferenceValue();
+            }
             else
                 return array(
                     'match' => false
@@ -237,8 +270,12 @@ class PokerController extends Controller
         }
 
         return array(
-            'match'  => true,
-            'ValMax' => $three
+            'match' => true,
+            'data'  => array(
+                'valMax' => $three,
+                'secondValMax' => $pair
+            )
+
         );
 
     }
@@ -250,14 +287,15 @@ class PokerController extends Controller
      */
     public function isFlush(array $cards)
     {
-        $suits   = array();
-        $valMax  = 0;
-        $theSuit = '';
+        $suits    = array();
+        $valMax   = 0;
+        $theSuit  = '';
+        $refValue = array();
+
         for($i=0;$i<count($cards);$i++) {
             $suits[]    = $cards[$i]->getSuit();
             $refValue[] = $cards[$i]->getReferenceValue();
         }
-
 
         for($i=0;$i<count($suits);$i++) {
             if (count(array_keys($suits, $cards[$i]->getSuit())) == 5) {
@@ -269,13 +307,21 @@ class PokerController extends Controller
             );
         }
 
-        return array(
-            'match'  => false,
-            'valMax' => $valMax
+        return array (
+            'match' => true,
+            'data'  => array(
+                'valMax' => $valMax,
+                'suit'   => $theSuit
+            )
+
         );
     }
 
 
+    /**
+     * @param array $cards
+     * @return array
+     */
     public function isStraight(array $cards)
     {
         $numbersValue = array();
@@ -287,7 +333,6 @@ class PokerController extends Controller
 
         asort($numbersValue);
         $valMax = max($numbersValue);
-
 
         foreach($numbersValue as $value) {
             $arrayOrder[] = $value;
@@ -309,8 +354,11 @@ class PokerController extends Controller
         }
 
         return array(
-            'match'  => true,
-            'valMax' => $valMax
+            'match' => true,
+            'data'  => array(
+                'valMax' => $valMax
+            )
+
         );
     }
 
@@ -322,24 +370,33 @@ class PokerController extends Controller
     public function isThree(array $cards)
     {
         $numbers = array();
-        $three   = '';
+        $three   = array(
+            'number'   => '',
+            'suit'     => '',
+            'refValue' => ''
+        );
 
-        for ($i = 0; $i < count($cards); $i++) {
+        for ($i = 0; $i < count($cards); $i++)
             $numbers[] = $cards[$i]->getNumber();
-        }
 
         for ($i = 0; $i < count($numbers); $i++) {
-            if (count(array_keys($numbers, $cards[$i]->getNumber())) == 3)
-                $three = $cards[$i]->getNumber();
+            if (count(array_keys($numbers, $cards[$i]->getNumber())) == 3) {
+                $three['number']   = $cards[$i]->getNumber();
+                $three['suit']     = $cards[$i]->getSuit();
+                $three['refValue'] = $cards[$i]->getReferenceValue();
+            }
         }
 
-        if($three == '')
+        if($three['number'] == '')
             return array(
                 'match'=> false
             );
         return array(
-            'match'  => true,
-            'ValMax' => $three
+            'match' => true,
+            'data'  => array(
+                'valMax' => $three
+            )
+
         );
     }
 
@@ -392,8 +449,8 @@ class PokerController extends Controller
 
         return array(
             'match'  => true,
-            'ValMax' => $valMax,
             'data'   => array(
+                'valMax' => $valMax,
                 'pairOne' => $pairOne,
                 'pairTwo' => $pairTwo
             ));
@@ -407,11 +464,12 @@ class PokerController extends Controller
     public function isPair(array $cards)
     {
         $pair = array(
-            'number' => '',
-            'suit' => '',
+            'number'   => '',
+            'suit'     => '',
             'refValue' => ''
         );
         $numbers = array();
+        $remainingCards = array();
 
         for ($i = 0; $i < count($cards); $i++) {
             $numbers[] = $cards[$i]->getNumber();
@@ -422,7 +480,8 @@ class PokerController extends Controller
                 $pair['number']   = $cards[$i]->getNumber();
                 $pair['suit']     = $cards[$i]->getSuit();
                 $pair['refValue'] = $cards[$i]->getReferenceValue();
-            }
+            } else
+                $remainingCards[] = $cards[$i]->getReferenceValue();
         }
 
         if($pair['number'] == '')
@@ -430,12 +489,12 @@ class PokerController extends Controller
                 'match' => false
             );
 
-        $valMax = max($numbers);
+        $valMax = max($remainingCards);
         return array(
             'match'  => true,
-            'ValMax' => $valMax,
             'data'   => array(
-                'pair' => $pair
+                'valMax'    => $valMax,
+                'cardsPair' => $pair
             ));
     }
 
@@ -465,10 +524,14 @@ class PokerController extends Controller
                 $maxValue['suit']     = $cards[$i]->getSuit();
                 $maxValue['refValue'] = $cards[$i]->getReferenceValue();
 
+                rsort($refValues);
                 return array(
                     'match'  => true,
-                    'ValMax' => $maxValue
-                    );
+                    'data'   => array(
+                        'valMax'    => $maxValue,
+                        'refValues' => $refValues
+                    )
+                );
             }
         }
         return false;

@@ -1,43 +1,59 @@
 {% extends 'TestBundle::layout.html.twig' %}
 
 {% block body %}
-    <section ng-controller="pokerController">
+    <section ng-controller="pokerController" ng-cloak>
         {% verbatim %}
 
-        <div class="panel panel-info" style="width: 500px;">
-            <div class="panel-heading">Player One <button type="button" class="btn btn-info btn-sm" ng-click="shuffle1(token)">Shuffle</button></div>
+        <div class="panel panel-info" style="width: 600px;">
+            <div class="panel-heading">
+                Player One <button ng-disabled="!token" type="button" class="btn btn-info btn-sm" ng-click="shuffle1(token)">Get cards!</button>
+                <div ng-if="shouldShowErrorCardsP1" class="alert alert-warning" role="alert">An error occurred getting the cards, try again</div>
+            </div>
             <div class="panel-body">
+                Cards:
                 <li ng-if="cardsP1" ng-repeat=" card in cardsP1">
                     {{ card.number }}
                     {{ card.suit }}
                 </li>
             </div>
-            <div class="panel-footer">Move player 1: </div>
+            <div class="panel-footer">
+                Move player 1: {{ moveP1.name }}
+                <div ng-if="winnerP1" class="alert alert-success" role="alert">Is the winner!</div>
+                <div ng-if="draw" class="alert alert-success" role="alert">Draw!</div>
+            </div>
         </div>
 
+        <div ng-if="shouldShowErrorToken" class="alert alert-danger" role="alert" style="width: 600px;">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Token not found.  <a href="" ng-click="getToken()"> Try again <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>.
+            <p>If the problem persists please contact support: <strong>support@compara.cl</strong></p>
+        </div>
 
-        <button ng-disabled="!isCardsP1 || !isCardsP2" type="button" class="btn btn-success btn-sm" ng-click="calculateWinner(cards)">Check Winner</button>
-        <button type="button" class="btn btn-danger btn-sm" ng-click="reset()">Reset</button>
-        <br><br>
+        <section ng-if="token">
+            <button ng-disabled="!isCardsP1 || !isCardsP2" type="button" class="btn btn-success btn-sm" ng-click="calculateWinner(cards)">Check Winner</button>
+            <button type="button" class="btn btn-danger btn-sm" ng-click="reset()">Reset</button>
+            <br><br>
+        </section>
 
-        <div class="panel panel-success" style="width: 500px;">
-            <div class="panel-heading">Player Two <button type="button" class="btn btn-info btn-sm" ng-click="shuffle2(token)">Shuffle</button></div>
+        <div class="panel panel-success" style="width: 600px;">
+            <div class="panel-heading">
+                Player Two <button ng-disabled="!token" type="button" class="btn btn-info btn-sm" ng-click="shuffle2(token)">Get cards!</button>
+                <div ng-if="shouldShowErrorCardsP2" class="alert alert-warning" role="alert">An error occurred getting the cards, try again</div>
+            </div>
             <div class="panel-body">
+                Cards:
                 <li ng-if="cardsP2" ng-repeat=" card in cardsP2">
                     {{ card.number }}
                     {{ card.suit }}
                 </li>
             </div>
-            <div class="panel-footer">Move player 2:</div>
+            <div class="panel-footer">
+                Move player 2: {{ moveP2.name }}
+                <div ng-if="winnerP2" class="alert alert-success" role="alert">Is the winner!</div>
+                <div ng-if="draw" class="alert alert-success" role="alert">Draw!</div>
+            </div>
         </div>
-
-
-
-
-
-        <button ng-click="getToken()">token</button>
-        <button ng-click="getCards(token)">cards</button>
-        <button ng-click="checkWinner(cards)">check winner</button>
         {% endverbatim %}
     </section>
 {% endblock %}

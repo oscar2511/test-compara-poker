@@ -9,6 +9,8 @@ class Move {
     private $name;
     /** @var  string */
     private $hierarchy;
+    /**@var array */
+    private $data = array();
     /** @var  array */
     private static $HIERARCHY_MOVE = array(
         'Royal flush'    => 100,
@@ -60,12 +62,29 @@ class Move {
         $this->hierarchy = $hierarchy;
     }
 
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
 
     public function toArray()
     {
         return array(
             'name'      => $this->name,
-            'hierarchy' => $this->hierarchy
+            'hierarchy' => $this->hierarchy,
+            'data'      => $this->data ? $this->data : null
         );
     }
 
