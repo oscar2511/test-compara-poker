@@ -290,12 +290,12 @@
         $scope.checkMove = function(cards) {
             var config = {
                 headers : {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': true
                 }
             };
 
-            var url = 'http://localhost/app_dev.php/check-winner';
-            return $http.post(url, cards, config)
+            return $http.post('app_dev.php/check-winner', cards, config)
                 .then(function(data){
                     if(data && data.status === 200) {
                         $scope.token = data.data;
