@@ -294,7 +294,7 @@
                 }
             };
 
-            var url = 'http://app.compara.dev/app_dev.php/check-winner';
+            var url = 'http://localhost/app_dev.php/check-winner';
             return $http.post(url, cards, config)
                 .then(function(data){
                     if(data && data.status === 200) {
