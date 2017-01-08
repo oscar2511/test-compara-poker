@@ -5,7 +5,7 @@ Implementación de "test code poker".
 
 Framework : Symfony 2.8
 
-Installacion
+Instalación
 --------------
 
 Install:

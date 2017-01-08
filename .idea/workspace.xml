@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc8a6833-c41b-4955-8c86-78726319aaca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Doc/Readme.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doc/Readme.txt" afterPath="$PROJECT_DIR$/Doc/Readme.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="testComparaPoker.iws" />
@@ -51,8 +51,8 @@
       <file leaf-file-name="Readme.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Doc/Readme.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.97402596" vertical-offset="0" max-vertical-offset="558">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7012987" vertical-offset="0" max-vertical-offset="558">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -582,7 +582,7 @@
       <workItem from="1483863061797" duration="4184000" />
       <workItem from="1483886052212" duration="435000" />
       <workItem from="1483886522488" duration="1200000" />
-      <workItem from="1483900268258" duration="2221000" />
+      <workItem from="1483900268258" duration="2341000" />
     </task>
     <task id="LOCAL-00001" summary="jugadas">
       <created>1483772690163</created>
@@ -620,11 +620,17 @@
       <option name="project" value="LOCAL" />
       <updated>1483901663687</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Readme en carpeta Doc">
+      <created>1483902614975</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1483902614975</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78960000" />
+    <option name="totallyTimeSpent" value="79080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -682,7 +688,8 @@
     <MESSAGE value="checkear jugadas" />
     <MESSAGE value="checkear winner" />
     <MESSAGE value="url request checkWinner" />
-    <option name="LAST_COMMIT_MESSAGE" value="url request checkWinner" />
+    <MESSAGE value="Readme en carpeta Doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme en carpeta Doc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1076,8 +1083,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Doc/Readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.97402596" vertical-offset="0" max-vertical-offset="558">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7012987" vertical-offset="0" max-vertical-offset="558">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
