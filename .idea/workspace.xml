@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc8a6833-c41b-4955-8c86-78726319aaca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Lib/Move.php" afterPath="$PROJECT_DIR$/src/TestBundle/Lib/Move.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php" afterPath="$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Resources/views/poker/index.html.twig" afterPath="$PROJECT_DIR$/src/TestBundle/Resources/views/poker/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" afterPath="$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -54,8 +51,8 @@
       <file leaf-file-name="pokerController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43578947" vertical-offset="3537" max-vertical-offset="5922">
-              <caret line="208" column="10" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.3963964" vertical-offset="1588" max-vertical-offset="5922">
+              <caret line="98" column="26" selection-start-line="98" selection-start-column="26" selection-end-line="98" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -64,8 +61,8 @@
       <file leaf-file-name="PokerController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="9428" max-vertical-offset="9900">
-              <caret line="534" column="13" selection-start-line="534" selection-start-column="13" selection-end-line="534" selection-end-column="13" />
+            <state vertical-scroll-proportion="-11.333333" vertical-offset="9180" max-vertical-offset="9900">
+              <caret line="527" column="29" selection-start-line="527" selection-start-column="29" selection-end-line="527" selection-end-column="29" />
               <folding>
                 <element signature="e#41#98#0#PHP" expanded="true" />
               </folding>
@@ -86,7 +83,7 @@
       <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="324">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
@@ -162,6 +159,9 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -486,9 +486,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -678,6 +675,10 @@
       <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -697,10 +698,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -829,7 +826,8 @@
       <workItem from="1483801757116" duration="2859000" />
       <workItem from="1483852628100" duration="9662000" />
       <workItem from="1483863061797" duration="4184000" />
-      <workItem from="1483886052212" duration="190000" />
+      <workItem from="1483886052212" duration="435000" />
+      <workItem from="1483886522488" duration="1200000" />
     </task>
     <task id="LOCAL-00001" summary="jugadas">
       <created>1483772690163</created>
@@ -855,11 +853,17 @@
       <option name="project" value="LOCAL" />
       <updated>1483804613153</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="checkear winner">
+      <created>1483886273554</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1483886273554</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75294000" />
+    <option name="totallyTimeSpent" value="76739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -874,6 +878,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -890,7 +895,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935917" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -915,7 +919,8 @@
     <MESSAGE value="jugadas" />
     <MESSAGE value="shuffle, jerarquia" />
     <MESSAGE value="checkear jugadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkear jugadas" />
+    <MESSAGE value="checkear winner" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkear winner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1268,14 +1273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestBundle/Lib/Move.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1178" max-vertical-offset="1764">
@@ -1292,10 +1289,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestBundle/Controller/PokerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9428" max-vertical-offset="9900">
-          <caret line="534" column="13" selection-start-line="534" selection-start-column="13" selection-end-line="534" selection-end-column="13" />
+        <state vertical-scroll-proportion="-11.333333" vertical-offset="9180" max-vertical-offset="9900">
+          <caret line="527" column="29" selection-start-line="527" selection-start-column="29" selection-end-line="527" selection-end-column="29" />
           <folding>
             <element signature="e#41#98#0#PHP" expanded="true" />
           </folding>
@@ -1304,8 +1309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestBundle/Resources/public/compara/angular/controllers/pokerController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43578947" vertical-offset="3537" max-vertical-offset="5922">
-          <caret line="208" column="10" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.3963964" vertical-offset="1588" max-vertical-offset="5922">
+          <caret line="98" column="26" selection-start-line="98" selection-start-column="26" selection-end-line="98" selection-end-column="26" />
           <folding />
         </state>
       </provider>

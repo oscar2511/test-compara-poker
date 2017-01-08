@@ -37,12 +37,12 @@
         };
 
 
-        $scope.failData = [
+       /* $scope.failData = [
             {'number': '5',
              'suit': 'hearts'},
             {'number': '7',
                 'suit': 'spade'},
-            {'number': '9',
+            {'number': 'Q',
                 'suit': 'hearts'},
             {'number': '1',
                 'suit': 'spade'},
@@ -61,7 +61,7 @@
                 'suit': 'spade'},
             {'number': 'A',
                 'suit': 'hearts'}
-        ];
+        ];*/
 
 
     $scope.shuffle1 = function(token) {
@@ -69,8 +69,7 @@
             $scope.getCards(token).then(function(response){
                 if(!angular.isUndefined(response)){
                     $scope.isCardsP1 = true;
-                    //$scope.cardsP1   = response;
-                    $scope.cardsP1   = $scope.failData;
+                    $scope.cardsP1   = response;
                     $scope.shouldShowErrorCardsP1 = false;
                 }
             }).catch(function(){
@@ -84,8 +83,7 @@
             $scope.getCards(token).then(function(response){
                 if(!angular.isUndefined(response)){
                     $scope.isCardsP2 = true;
-                    //$scope.cardsP2   = response;
-                    $scope.cardsP2   = $scope.failData2;
+                    $scope.cardsP2   = response;
                     $scope.shouldShowErrorCardsP2 = false;
                 }
             }).catch(function(){
@@ -98,6 +96,7 @@
      * Reset default values
      */
     $scope.reset = function () {
+        $scope.getToken();
         $scope.cardsP1   = false;
         $scope.cardsP2   = [];
         $scope.isCardsP1 = false;
@@ -138,7 +137,6 @@
             if($scope.isCardsP1) {
                 $scope.checkMove($scope.cardsP1)
                     .then(function (move) {
-                        console.log(move);
                         $scope.moveP1 = move;
 
                         if ($scope.isCardsP2) {
@@ -200,14 +198,16 @@
          * @param move2
          */
         var checkHighCard = function(move1, move2) {
-          if(move1.data.valMax > move2.data.valMax)
-              $scope.winnerP1 = true;
-          if(move1.data.valMax < move2.data.valMax)
-              $scope.winnerP2 = true;
-          if(move1.data.valMax == move2.data.valMax) {
-              //for (var i=0; i<move1.data.; i++) {
-          }
-
+              for (var i = 0; i < move1.data.refValues.length; i++) {
+                  if(move1.data.refValues[i] > move2.data.refValues[i]) {
+                      $scope.winnerP1 = true;
+                      break;
+                  }
+                  if(move1.data.refValues[i] < move2.data.refValues[i]) {
+                      $scope.winnerP2 = true;
+                      break;
+                  }
+              }
         };
 
         /**
