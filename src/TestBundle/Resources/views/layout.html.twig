@@ -3,6 +3,9 @@
 {%  block javascripts %}
      {{ parent() }}
 
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
     <!--<link rel="icon" type="image/x-icon" href="{##}{ asset('logo-colmenapp.ico') }}" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
