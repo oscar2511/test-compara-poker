@@ -273,8 +273,9 @@
                 }
             };
 
-            //return $http.post('app.php/check-winner', cards, config)
-            return $http.post(Routing.generate('check-winner', cards))
+            var url = Routing.generate('check-winner');
+
+            return $http.post(url, cards, config)
                 .then(function(data){
                     if(data && data.status === 200) {
                         $scope.token = data.data;

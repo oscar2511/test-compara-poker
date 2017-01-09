@@ -27,6 +27,7 @@ class PokerController extends Controller
 
     /**
      * @param Request $request
+     * @return JsonResponse
      */
     public function checkWinnerAction(Request $request)
     {
@@ -263,10 +264,11 @@ class PokerController extends Controller
                 $pair['suit']     = $cards[$i]->getSuit();
                 $pair['refValue'] = $cards[$i]->getReferenceValue();
             }
-            else
+            else {
                 return array(
                     'match' => false
                 );
+            }
         }
 
         return array(

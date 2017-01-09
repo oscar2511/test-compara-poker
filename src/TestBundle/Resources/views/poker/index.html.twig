@@ -31,14 +31,14 @@
         </div>
 
         <section ng-if="token">
-            <button ng-disabled="!isCardsP1 || !isCardsP2" type="button" class="btn btn-success btn-sm" ng-click="calculateWinner(cards)">Check Winner</button>
+            <button ng-disabled="!isCardsP1 || !isCardsP2 || winnerP2 || winnerP1 " type="button" class="btn btn-success btn-sm" ng-click="calculateWinner(cards)">Check Winner</button>
             <button type="button" class="btn btn-danger btn-sm" ng-click="reset()">Reset</button>
             <br><br>
         </section>
 
         <div class="panel panel-success" style="width: 600px;">
             <div class="panel-heading">
-                Player Two <button ng-disabled="!token || winnerP2 || winnerP1"" type="button" class="btn btn-info btn-sm" ng-click="shuffle2(token)">Get cards!</button>
+                Player Two <button ng-disabled="!token || winnerP2 || winnerP1" type="button" class="btn btn-info btn-sm" ng-click="shuffle2(token)">Get cards!</button>
                 <div ng-if="shouldShowErrorCardsP2" class="alert alert-warning" role="alert">An error occurred getting the cards, try again.</div>
             </div>
             <div class="panel-body">
