@@ -9,4 +9,5 @@ token:
 check-winner:
     path:    /check-winner
     defaults: { _controller: TestBundle:Poker:checkWinner }
-    methods: POST
+    options:
+            expose: true
